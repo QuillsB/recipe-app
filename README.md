@@ -31,6 +31,10 @@ npm test
   - Create basic component to display recipe label
   - Create fake data from edamam recipe api
 
+- [Day2]
+  - Create new component SearchBar
+  - Implement an InputText for SearchBar
+
 ## Features
 
 - [Project][project]
