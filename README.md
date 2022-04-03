@@ -35,6 +35,10 @@ npm test
   - Create new component SearchBar
   - Implement an InputText for SearchBar
 
+- [Day3]
+  - Add SearchBar icons
+  - Start implementation of search display with icon press
+
 ## Features
 
 - [Project][project]
