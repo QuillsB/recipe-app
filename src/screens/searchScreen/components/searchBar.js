@@ -1,15 +1,22 @@
-import React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native';
 
 export default function SearchBar(props) {
+  const [isCall, setIsCall] = useState(false);
+
   return (
     <View style={styles.searchBarContainer}>
-      <View style={styles.searchInputTextContainer}>
-        <Text style={styles.searchIcon}>?</Text>
-        <TextInput style={styles.searchInputText} />
+      <View style={[styles.searchInputTextContainer, isCall ? styles.searchInputTextBorder : '' ]}>
+        <TouchableOpacity onPress={() => setIsCall(!isCall)}>
+          <Image style={styles.searchIcon} source={require('assets/search-icon.png')} />
+        </TouchableOpacity>
+        <TextInput
+          style={styles.searchInputText}
+          placeholder="Search"
+        />
       </View>
       <View style={styles.searchSaverContainer}>
-        <Text style={styles.searchSaver}>Sa</Text>
+        <Image style={styles.searchSaver} source={require('assets/bookmark-icon.png')} />
       </View>
     </View>
   );
@@ -34,9 +41,16 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     alignItems: 'center'
   },
+  searchInputTextBorder: {
+    borderColor: 'orange',
+    borderWidth: 1
+  },
   searchIcon: {
     flex: 1,
-    paddingLeft: 5
+    paddingLeft: 5,
+    width: 20,
+    height: 20,
+    resizeMode: 'contain'
   },
   searchInputText: {
     flex: 9,
@@ -44,7 +58,7 @@ const styles = StyleSheet.create({
   },
   searchSaverContainer: {
     flex: 1,
-    backgroundColor: 'orange',
+    backgroundColor: '#FFD68A',
     height: 40,
     borderRadius: 7,
     justifyContent: 'center',
@@ -52,5 +66,9 @@ const styles = StyleSheet.create({
   },
   searchSaver: {
     flex: 1,
+    paddingLeft: 5,
+    width: 20,
+    height: 20,
+    resizeMode: 'contain'
   }
 });
