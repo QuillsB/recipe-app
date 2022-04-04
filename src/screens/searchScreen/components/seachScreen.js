@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import RecipeSummary from 'screens/searchScreen/components/recipeSummary';
-import SearchBar from 'screens/searchScreen/components/searchBar';
+import SearchBar from 'containers/searchScreen/searchBarContainer';
 
 export default function SearchScreen(props) {
   return (

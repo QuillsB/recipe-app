@@ -2,17 +2,36 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native';
 
 export default function SearchBar(props) {
-  const [isCall, setIsCall] = useState(false);
+  const [isCalled, setIsCalled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const {
+    getSearchByQuery,
+  } = props;
+
+  const writeSearchInput = (newQuery) => {
+    setIsCalled(false);
+    setSearchQuery(newQuery);
+  };
+
+  const sendSearchQuery = (event) => {
+    event.preventDefault();
+
+    setIsCalled(true);
+    getSearchByQuery(searchQuery);
+  };
 
   return (
     <View style={styles.searchBarContainer}>
-      <View style={[styles.searchInputTextContainer, isCall ? styles.searchInputTextBorder : '' ]}>
-        <TouchableOpacity onPress={() => setIsCall(!isCall)}>
+      <View style={[styles.searchInputTextContainer, isCalled ? styles.searchInputTextBorder : '' ]}>
+        <TouchableOpacity onPress={sendSearchQuery}>
           <Image style={styles.searchIcon} source={require('assets/search-icon.png')} />
         </TouchableOpacity>
         <TextInput
           style={styles.searchInputText}
           placeholder="Search"
+          value={searchQuery}
+          onChangeText={writeSearchInput}
         />
       </View>
       <View style={styles.searchSaverContainer}>
@@ -42,12 +61,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   searchInputTextBorder: {
-    borderColor: 'orange',
+    borderColor: 'green',
     borderWidth: 1
   },
   searchIcon: {
     flex: 1,
-    paddingLeft: 5,
+    marginLeft: 5,
     width: 20,
     height: 20,
     resizeMode: 'contain'

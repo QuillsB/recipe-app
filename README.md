@@ -39,6 +39,13 @@ npm test
   - Add SearchBar icons
   - Start implementation of search display with icon press
 
+- [Day4]
+  - Add complete store/Provider using redux
+  - Add reducers with first reducer for searchPage
+  - Add sagas with first saga for getSearchByQuery
+  - Add actions
+  - Finish searchBar, sending query to saga.
+
 ## Features
 
 - [Project][project]
